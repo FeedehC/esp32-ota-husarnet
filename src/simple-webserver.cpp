@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include <AsyncElegantOTA.h>
 #include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
@@ -5,6 +6,9 @@
 #include <WiFi.h>
 
 #define HTTP_PORT 8080
+
+#define LED 2
+#define DELAY 300
 
 #if __has_include("credentials.h")
 
@@ -118,4 +122,7 @@ void setup(void) {
   }
 }
 
-void loop(void) { ; }
+void loop(void) { 
+  digitalWrite(LED, !digitalRead(LED));
+  delay(DELAY);
+ }
